@@ -94,7 +94,7 @@ function App() {
               <div className="w-10 h-10 border-10 border-red-500 border-dashed rounded-full animate-spin mt-9"></div>
             )}
             <div
-              className={`w-76 h-73 mt-2 overflow-x-hidden overflow-y-scroll no-scrollbar ${!hospital ? "hidden" : "block"}`}
+              className={`w-76 h-[30vh] mt-2 overflow-x-hidden overflow-y-scroll no-scrollbar ${!hospital ? "hidden" : "block"}`}
             >
               {hospital &&
                 hospital.map((hospitals, index) => (
