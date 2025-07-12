@@ -110,13 +110,13 @@ function App() {
                   >
                     <div className="ml-3 w-53 h-full flex flex-col items-start justify-evenly">
                       <div className="h-4 overflow-hidden">
-                        <div className="text-[9.5px]">
+                        <div className="text-[10px]">
                           <span className="font-bold">Hospital Name: </span>
                           <span className="overflow-hidden">{hospitals.tags.name}</span>
                         </div>
                       </div>
                       <div className="h-4 overflow-hidden">
-                        <div className="text-[9.5px] no-underline overflow-hidden">
+                        <div className="text-[10px] no-underline overflow-hidden">
                           <span className="font-bold">Hospital Number: </span>
                           {!hospitals.tags["contact:phone"] &&
                             !hospitals.tags.phone && (
