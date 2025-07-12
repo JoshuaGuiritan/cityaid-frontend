@@ -136,8 +136,16 @@ function App() {
                       </div>
                     </div>
                       <button
-                        className={`w-12 h-12 mr-3 bg-green-500 rounded-md cursor-pointer flex justify-center items-center hover:bg-green-600 transition-colors duration-200 ease-out ${hospitals.tags.phone || hospitals.tags["contact:phone"] ? "opacity-100" : "opacity-40"}`}
-                        onClick={`window.location.href='${!hospitals.tags["contact:phone"] && hospitals.tags.phone ? "tel:" + hospitals.tags.phone : "tel:" + hospitals.tags["contact:phone"]}'`}
+                        className={`w-12 h-12 mr-3 bg-green-500 rounded-md flex justify-center items-center transition-colors duration-200 ease-out ${hospitals.tags.phone || hospitals.tags["contact:phone"] ? "opacity-100  cursor-pointer hover:bg-green-600" : "opacity-40"}`}
+                        onClick={() => {
+                          const phone =
+                            !hospitals.tags["contact:phone"] && hospitals.tags.phone
+                              ? hospitals.tags.phone
+                              : hospitals.tags["contact:phone"];
+                          if (phone) {
+                            window.location.href = "tel:" + phone;
+                          }
+                        }}
                         disabled={!hospitals.tags["contact:phone"] && !hospitals.tags.phone ? true : false}
                       >
                         <img src="/Images/white-call-logo.png" className="w-8" />
