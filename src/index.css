@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@font-face{
+  font-family: "Garet";
+  src: url("/Fonts/Garet-Book.ttf");
+}
+
+@font-face{
+  font-family: "Heavy-Garet";
+  src: url("/Fonts/Garet-Heavy.ttf");
+}
+
+html{
+  box-sizing: border-box;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Garet, system-ui, sans-serif;
+  line-height: 1.6;
+  background-color: #393939;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+@theme {
+  --color-light-red: #ee5350;
+  --color-mid-red: #c62828;
+  --color-dark-red: #b61c1c;
+  --color-hospital-rows: #5d5d5d;
+  --font-heavy-garet: "Heavy-Garet", "system-ui", "sans-serif";
+}
+
+/* Hide scrollbar track and buttons, show only the scroll thumb */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
