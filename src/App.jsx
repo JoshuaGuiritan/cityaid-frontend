@@ -109,13 +109,13 @@ function App() {
                     key={index}
                   >
                     <div className="ml-3 w-53 h-full flex flex-col items-start justify-evenly">
-                      <div className="h-4 overflow-hidden">
-                        <h1 className="text-[9px] overflow-hidden">
+                      <div className="h-3 overflow-hidden flex items-center">
+                        <h1 className="text-[9px]">
                           <span className="font-bold">Hospital Name: </span>
-                          <span>{hospitals.tags.name}</span>
+                          <span className="overflow-hidden">{hospitals.tags.name}</span>
                         </h1>
                       </div>
-                      <div className="h-4 overflow-hidden">
+                      <div className="h-3 overflow-hidden flex items-center">
                         <h1 className="text-[9px] no-underline overflow-hidden">
                           <span className="font-bold">Hospital Number: </span>
                           {!hospitals.tags["contact:phone"] &&
