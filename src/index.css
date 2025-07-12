@@ -35,7 +35,10 @@ body {
   --font-heavy-garet: "Heavy-Garet", "system-ui", "sans-serif";
 }
 
-/* Hide scrollbar track and buttons, show only the scroll thumb */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
