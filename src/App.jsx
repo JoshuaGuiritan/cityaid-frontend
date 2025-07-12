@@ -41,13 +41,15 @@ function App() {
       <div className="w-screen h-screen overflow-y-hidden">
         <div className="w-full h-full flex flex-col justify-center items-center">
           <img src="/Images/phone.png" className="w-150 hidden sm:block"/>
-          <div className="absolute hidden sm:block">
-            <div className="flex flex-col justify-center items-center">
-              <h1 className="font-heavy-garet text-[40px]">
-                  <span className="text-[#19141A]">CITY</span>
-                  <span className="text-[#19141A]">AID</span>
-              </h1>
-              <h1 className="text-[13px] mt-5 font-bold text-[#19141A]">PHONE COMPATIBLE ONLY</h1>
+          <div className="relative hidden sm:block">
+            <div className="absolute">
+              <div className="flex flex-col justify-center items-center">
+                <h1 className="font-heavy-garet text-[40px]">
+                    <span className="text-[#19141A]">CITY</span>
+                    <span className="text-[#19141A]">AID</span>
+                </h1>
+                <h1 className="text-[13px] mt-5 font-bold text-[#19141A]">PHONE COMPATIBLE ONLY</h1>
+              </div>
             </div>
           </div>
           <div className="w-80 flex flex-col justify-center items-center sm:hidden">
