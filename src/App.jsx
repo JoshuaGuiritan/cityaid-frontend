@@ -12,6 +12,9 @@ function App() {
       setHospital(null);
       setlocationLoading(true);
       const res1 = await fetch(import.meta.env.VITE_LOCATION_SOURCE);
+        if(!res1.ok){
+          throw new Error("No Fetch!");
+        }
       const locationn = await res1.json();
       setlocationLoading(false);
       setLocation(locationn);
@@ -27,6 +30,9 @@ function App() {
           longitude: locationn.longitude
         })
       });
+      if(!res1.ok){
+        throw new Error("No Fetch!");
+      }
       const hospitalData = await res2.json();
       sethospitalLoading(false);
       setHospital(hospitalData);
