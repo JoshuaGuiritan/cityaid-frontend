@@ -112,7 +112,7 @@ function App() {
                         </h1>
                       </div>
                       <div className="h-4 overflow-hidden">
-                        <h1 className="text-[9px]">
+                        <h1 className="text-[9px] no-underline">
                           <span className="font-bold">Hospital Number: </span>
                           {!hospitals.tags["contact:phone"] &&
                             !hospitals.tags.phone && (
