@@ -50,7 +50,7 @@ function App() {
               <h1 className="text-[13px] mt-5 font-bold text-[#19141A]">PHONE COMPATIBLE ONLY</h1>
             </div>
           </div>
-          <div className="w-150 flex flex-col justify-center items-center sm:hidden border border-red-500">
+          <div className="w-80 flex flex-col justify-center items-center sm:hidden">
             <div className="flex justify-center items-center">
               <img src="/Images/logo.png" className="w-10 mr-0.5" />
               <h1 className="font-heavy-garet text-6xl">
