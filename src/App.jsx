@@ -11,13 +11,13 @@ function App() {
       setLocation(null);
       setHospital(null);
       setlocationLoading(true);
-      const res1 = await fetch("/api/location");
+      const res1 = await fetch(import.meta.env.VITE_LOCATION_SOURCE);
       const locationn = await res1.json();
       setlocationLoading(false);
       setLocation(locationn);
 
       sethospitalLoading(true);
-      const res2 = await fetch("/api/hospitals", {
+      const res2 = await fetch(import.meta.env.VITE_HOSPITAL_SOURCE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
