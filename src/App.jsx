@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <div className="w-screen h-screen overflow-hidden">
+      <div className="w-screen h-screen overflow-y-hidden">
         <div className="w-full h-full flex flex-col justify-center items-center">
           <img src="/Images/phone.png" className="w-150 hidden sm:block"/>
           <div className="absolute hidden sm:block">
