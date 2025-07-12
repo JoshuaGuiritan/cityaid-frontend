@@ -50,7 +50,7 @@ function App() {
               <h1 className="text-[13px] mt-5 font-bold text-[#19141A]">PHONE COMPATIBLE ONLY</h1>
             </div>
           </div>
-          <div className="w-150 h-170 flex flex-col justify-center items-center sm:hidden">
+          <div className="w-150 flex flex-col justify-center items-center sm:hidden border border-red-500">
             <div className="flex justify-center items-center">
               <img src="/Images/logo.png" className="w-10 mr-0.5" />
               <h1 className="font-heavy-garet text-6xl">
@@ -94,7 +94,7 @@ function App() {
               <div className="w-10 h-10 border-10 border-red-500 border-dashed rounded-full animate-spin mt-9"></div>
             )}
             <div
-              className={`w-76 h-73 mt-2 overflow-y-scroll no-scrollbar ${!hospital ? "hidden" : "block"}`}
+              className={`w-76 h-73 mt-2 overflow-x-hidden overflow-y-scroll no-scrollbar ${!hospital ? "hidden" : "block"}`}
             >
               {hospital &&
                 hospital.map((hospitals, index) => (
