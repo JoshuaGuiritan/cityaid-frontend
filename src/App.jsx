@@ -109,14 +109,14 @@ function App() {
                     key={index}
                   >
                     <div className="ml-3 w-53 h-full flex flex-col items-start justify-evenly">
-                      <div className="h-3 overflow-hidden flex items-center">
-                        <h1 className="text-[9px]">
+                      <div className="h-4 overflow-hidden">
+                        <div className="text-[9px]">
                           <span className="font-bold">Hospital Name: </span>
                           <span className="overflow-hidden">{hospitals.tags.name}</span>
-                        </h1>
+                        </div>
                       </div>
-                      <div className="h-3 overflow-hidden flex items-center">
-                        <h1 className="text-[9px] no-underline overflow-hidden">
+                      <div className="h-4 overflow-hidden">
+                        <div className="text-[9px] no-underline overflow-hidden">
                           <span className="font-bold">Hospital Number: </span>
                           {!hospitals.tags["contact:phone"] &&
                             !hospitals.tags.phone && (
@@ -132,7 +132,7 @@ function App() {
                           !hospitals.tags.phone
                             ? hospitals.tags["contact:phone"]
                             : hospitals.tags.phone}
-                        </h1>
+                        </div>
                       </div>
                     </div>
                       <button
