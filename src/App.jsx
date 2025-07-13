@@ -11,8 +11,9 @@ function App() {
   const detectNow = () => {
     setlocationLoading(true);
     if ("geolocation" in navigator) {
-      try{
       navigator.geolocation.getCurrentPosition(async (position) => {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
           const latitudes = parseFloat(position.coords.latitude.toFixed(4));
           const longitudes = parseFloat(position.coords.longitude.toFixed(4));
         
@@ -38,13 +39,10 @@ function App() {
               setHospital(hospitalData);
               console.log(hospitalData);
         });
-      }
-      catch(err){
-        setDetectionStatus(err.message);
-      }
-    } else {
-      setDetectionStatus("Geolocation is not supported by your browser");
-    }
+      }(error) => {
+    setDetectionStatus(error.message);
+    setlocationLoading(false);
+    },{ enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
   };
 
   return (
