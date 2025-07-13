@@ -1,48 +1,45 @@
 import { useState } from "react";
 
 function App() {
-  const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState();
+  const [location, setLocation] = useState();
   const [hospital, setHospital] = useState();
-  const [detectionStatus, setDetectionStatus] = useState("Offline");
   const [locationloading, setlocationLoading] = useState(false);
   const [hospitalloading, sethospitalLoading] = useState(false);
 
-  const detectNow = () => {
-    setlocationLoading(true);
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        console.log(position.coords.latitude);
-        console.log(position.coords.longitude);
-          const latitudes = parseFloat(position.coords.latitude.toFixed(4));
-          const longitudes = parseFloat(position.coords.longitude.toFixed(4));
-        
-          setLatitude(latitudes);
-          setLongitude(longitudes);
-          setlocationLoading(false);
-          sethospitalLoading(true);
-          const res2 = await fetch(import.meta.env.VITE_HOSPITAL_SOURCE, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-                body: JSON.stringify({
-                  latitude: latitudes,
-                  longitude: longitudes
-                })
-              });
-              if(!res2.ok){
-                throw new Error("No Fetch!");
-              }
-              const hospitalData = await res2.json();
-              sethospitalLoading(false);
-              setHospital(hospitalData);
-              console.log(hospitalData);
-        });
-      }(error) => {
-    setDetectionStatus(error.message);
-    setlocationLoading(false);
-    },{ enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+  const detectNow = async () => {
+    try {
+      setLocation(null);
+      setHospital(null);
+      setlocationLoading(true);
+      const res1 = await fetch(import.meta.env.VITE_LOCATION_SOURCE);
+        if(!res1.ok){
+          throw new Error("No Fetch!");
+        }
+      const locationn = await res1.json();
+      setlocationLoading(false);
+      setLocation(locationn);
+
+      sethospitalLoading(true);
+      const res2 = await fetch(import.meta.env.VITE_HOSPITAL_SOURCE, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          latitude: locationn.latitude,
+          longitude: locationn.longitude
+        })
+      });
+      if(!res1.ok){
+        throw new Error("No Fetch!");
+      }
+      const hospitalData = await res2.json();
+      sethospitalLoading(false);
+      setHospital(hospitalData);
+      console.log(hospitalData);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (
@@ -76,23 +73,20 @@ function App() {
             </div>
             <div className="mt-10 flex justify-center items-center">
               <div
-                className={`h-4 w-4 rounded-full ${!latitude && !longitude ? "bg-red-500" : "bg-green-500"} border border-black`}
+                className={`h-4 w-4 rounded-full ${!location ? "bg-red-500" : "bg-green-500"} border border-black`}
               ></div>
               <h3 className="ml-2 font-bold text-xs text-gray-200">
-                Coordinates Detection
+                City Detected
               </h3>
             </div>
             <div className="mt-5">
-              <div
+              <p
                 className={`text-[10px] font-light text-gray-200 ${locationloading && "hidden"}`}
               >
-                {!latitude && !longitude
-                  ? detectionStatus
-                  : (<div className="w-76 flex justify-evenly">
-                      <h1>{`Latitude: ${latitude}`}</h1>
-                    <h1>{`Longitude: ${longitude}`}</h1>
-                  </div>)}
-              </div>
+                {!location
+                  ? "Offline"
+                  : `${location.city}, ${location.region}, ${location.country}`}
+              </p>
               {locationloading && (
                 <div className="w-10 h-10 border-10 border-red-500 border-dashed rounded-full animate-spin"></div>
               )}
