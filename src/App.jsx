@@ -60,13 +60,13 @@ function App() {
             <div className="flex justify-center items-center">
               <img src="/Images/logo.png" className="w-10 mr-0.5" />
               <h1 className="font-heavy-garet text-6xl">
-                <span className="text-light-red">GPS</span>
+                <span className="text-light-red">CITY</span>
                 <span className="text-mid-red">AID</span>
               </h1>
             </div>
             <div className="font-bold text-[10px]">
               <p>
-                <span className="text-light-red">Your Coordinates,</span>{" "}
+                <span className="text-light-red">Your City,</span>{" "}
                 <span className="text-mid-red">Your Hospital,</span>{" "}
                 <span className="text-dark-red">One Click</span>
               </p>
