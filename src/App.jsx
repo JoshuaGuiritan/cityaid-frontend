@@ -50,7 +50,7 @@ function App() {
             <div className="absolute hidden sm:block">
               <div className="flex flex-col justify-center items-center">
                 <h1 className="font-heavy-garet text-[40px]">
-                    <span className="text-[#19141A]">GPS</span>
+                    <span className="text-[#19141A]">CITY</span>
                     <span className="text-[#19141A]">AID</span>
                 </h1>
                 <h1 className="text-[13px] mt-5 font-bold text-[#19141A]">PHONE COMPATIBLE ONLY</h1>
