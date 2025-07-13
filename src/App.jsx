@@ -13,8 +13,9 @@ function App() {
     if ("geolocation" in navigator) {
       try{
       navigator.geolocation.getCurrentPosition(async (position) => {
-          const latitudes = position.coords.latitude;
-          const longitudes = position.coords.longitude;
+          const latitudes = parseFloat(position.coords.latitude.toFixed(4));
+          const longitudes = parseFloat(position.coords.longitude.toFixed(4));
+        
           setLatitude(latitudes);
           setLongitude(longitudes);
           setlocationLoading(false);
