@@ -1,44 +1,48 @@
 import { useState } from "react";
 
 function App() {
-  const [location, setLocation] = useState();
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
   const [hospital, setHospital] = useState();
+  const [detectionStatus, setDetectionStatus] = useState("Offline");
   const [locationloading, setlocationLoading] = useState(false);
   const [hospitalloading, sethospitalLoading] = useState(false);
 
-  const detectNow = async () => {
-    try {
-      setLocation(null);
-      setHospital(null);
-      setlocationLoading(true);
-      const res1 = await fetch(import.meta.env.VITE_LOCATION_SOURCE);
-        if(!res1.ok){
-          throw new Error("No Fetch!");
-        }
-      const locationn = await res1.json();
-      setlocationLoading(false);
-      setLocation(locationn);
-
-      sethospitalLoading(true);
-      const res2 = await fetch(import.meta.env.VITE_HOSPITAL_SOURCE, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          latitude: locationn.latitude,
-          longitude: locationn.longitude
-        })
-      });
-      if(!res1.ok){
-        throw new Error("No Fetch!");
+  const detectNow = () => {
+    setlocationLoading(true);
+    if ("geolocation" in navigator) {
+      try{
+      navigator.geolocation.getCurrentPosition(async (position) => {
+          const latitudes = position.coords.latitude;
+          const longitudes = position.coords.longitude;
+          setLatitude(latitudes);
+          setLongitude(longitudes);
+          setlocationLoading(false);
+          sethospitalLoading(true);
+          const res2 = await fetch(import.meta.env.VITE_HOSPITAL_SOURCE, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+                body: JSON.stringify({
+                  latitude: latitudes,
+                  longitude: longitudes
+                })
+              });
+              if(!res2.ok){
+                throw new Error("No Fetch!");
+              }
+              const hospitalData = await res2.json();
+              sethospitalLoading(false);
+              setHospital(hospitalData);
+              console.log(hospitalData);
+        });
       }
-      const hospitalData = await res2.json();
-      sethospitalLoading(false);
-      setHospital(hospitalData);
-      console.log(hospitalData);
-    } catch (err) {
-      console.log(err.message);
+      catch(err){
+        setDetectionStatus(err.message);
+      }
+    } else {
+      setDetectionStatus("Geolocation is not supported by your browser");
     }
   };
 
@@ -50,7 +54,7 @@ function App() {
             <div className="absolute hidden sm:block">
               <div className="flex flex-col justify-center items-center">
                 <h1 className="font-heavy-garet text-[40px]">
-                    <span className="text-[#19141A]">CITY</span>
+                    <span className="text-[#19141A]">GPS</span>
                     <span className="text-[#19141A]">AID</span>
                 </h1>
                 <h1 className="text-[13px] mt-5 font-bold text-[#19141A]">PHONE COMPATIBLE ONLY</h1>
@@ -60,33 +64,36 @@ function App() {
             <div className="flex justify-center items-center">
               <img src="/Images/logo.png" className="w-10 mr-0.5" />
               <h1 className="font-heavy-garet text-6xl">
-                <span className="text-light-red">CITY</span>
+                <span className="text-light-red">GPS</span>
                 <span className="text-mid-red">AID</span>
               </h1>
             </div>
             <div className="font-bold text-[10px]">
               <p>
-                <span className="text-light-red">Your City,</span>{" "}
+                <span className="text-light-red">Your Coordinates,</span>{" "}
                 <span className="text-mid-red">Your Hospital,</span>{" "}
                 <span className="text-dark-red">One Click</span>
               </p>
             </div>
             <div className="mt-10 flex justify-center items-center">
               <div
-                className={`h-4 w-4 rounded-full ${!location ? "bg-red-500" : "bg-green-500"} border border-black`}
+                className={`h-4 w-4 rounded-full ${!latitude && !longitude ? "bg-red-500" : "bg-green-500"} border border-black`}
               ></div>
               <h3 className="ml-2 font-bold text-xs text-gray-200">
-                City Detected
+                Coordinates Detection
               </h3>
             </div>
             <div className="mt-5">
-              <p
+              <div
                 className={`text-[10px] font-light text-gray-200 ${locationloading && "hidden"}`}
               >
-                {!location
-                  ? "Offline"
-                  : `${location.city}, ${location.region}, ${location.country}`}
-              </p>
+                {!latitude && !longitude
+                  ? detectionStatus
+                  : (<div className="w-76 flex justify-evenly">
+                      <h1>{`Latitude: ${latitude}`}</h1>
+                    <h1>{`Longitude: ${longitude}`}</h1>
+                  </div>)}
+              </div>
               {locationloading && (
                 <div className="w-10 h-10 border-10 border-red-500 border-dashed rounded-full animate-spin"></div>
               )}
