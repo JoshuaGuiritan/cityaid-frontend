@@ -1,12 +1,62 @@
-# React + Vite
+# 📍 CityAid
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Your City, Your Hospitals, One Click**
 
-Currently, two official plugins are available:
+CityAid is a smart, location-based hospital directory built for the **LITMIN project**. With just a single button click, it detects the user's **city, region, and country** using **GeoJS**, then fetches local hospitals from **OpenStreetMap** using the **Overpass API**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Designed with emergencies in mind, it instantly displays nearby **hospital names** and **contact numbers**—making healthcare access just one click away.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🖼️ Preview
+
+### 🔴 Before Detection:
+![Before Detection](./1.jpg)
+
+### 🟢 After Detection:
+![After Detection](./2.jpg)
+
+---
+
+## 🚀 Features
+
+- 🌍 **Location Detection** via [GeoJS](https://www.geojs.io)
+- 🏥 **Nearby Hospital Search** using [Overpass API (OpenStreetMap)](https://overpass-api.de/)
+- 📞 **Contact Numbers** listed beside hospital names
+- 🔁 **Redetect Button** to refresh location and data
+- 🌑 **Dark UI** with smooth, modern styling
+- 🧠 Built for accessibility, speed, and emergency use
+
+---
+
+## 🛠️ Tech Stack
+
+### 🔧 Frontend:
+- ⚛️ **React** (via Vite)
+- 🎨 **Tailwind CSS** for styling
+- 🌍 **GeoJS API** for city/region/country detection
+- 🏥 **Overpass API** for real-time hospital data
+
+### 🔧 Backend:
+- 🚀 **Node.js** + **Express.js**
+- 🌐 Deployed on **Vercel Serverless Functions**
+
+### 🚀 Deployment:
+- **Frontend**: [Vercel](https://vercel.com)
+- **Backend/API**: Vercel Serverless (Express API routes)
+
+---
+
+## 🧪 How It Works
+
+1. User clicks **"DETECT NOW"**
+2. The app sends a request to **GeoJS** → gets city, region, and country
+3. That data is sent to a **Node.js + Express backend** (hosted on Vercel)
+4. The backend queries **Overpass API** for hospital nodes in that area
+5. The frontend displays the hospital list with names and contact info
+6. Users can click "CALL" buttons for direct emergency contact
+
+---
+
+## 📁 Project Structure
+
