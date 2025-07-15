@@ -8,7 +8,7 @@ Designed with emergencies in mind, it instantly displays nearby **hospital names
 
 ---
 
-## 🖼️ Link
+## 🌐 Link
 
 http://cityaid-frontend.vercel.app
 
