@@ -38,19 +38,3 @@ http://cityaid-frontend.vercel.app
 ### 🚀 Deployment:
 - **Frontend**: [Vercel](https://vercel.com)
 - **Backend/API**: Vercel Serverless (Express API routes)
-
----
-
-## 🧪 How It Works
-
-1. User clicks **"DETECT NOW"**
-2. The app sends a request to **GeoJS** → gets city, region, and country
-3. That data is sent to a **Node.js + Express backend** (hosted on Vercel)
-4. The backend queries **Overpass API** for hospital nodes in that area
-5. The frontend displays the hospital list with names and contact info
-6. Users can click "CALL" buttons for direct emergency contact
-
----
-
-## 📁 Project Structure
-
