@@ -8,15 +8,9 @@ Designed with emergencies in mind, it instantly displays nearby **hospital names
 
 ---
 
-## 🖼️ Preview
+## 🖼️ Link
 
-### 🔴 Before Detection:
-![Before Detection](./1.jpg)
-
-### 🟢 After Detection:
-![After Detection](./2.jpg)
-
----
+cityaid-frontend.vercel.app
 
 ## 🚀 Features
 
