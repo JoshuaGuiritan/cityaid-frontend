@@ -1,4 +1,4 @@
-# 📍 CityAid
+# CityAid
 
 **Your City, Your Hospitals, One Click**
 
@@ -25,16 +25,11 @@ http://cityaid-frontend.vercel.app
 
 ## 🛠️ Tech Stack
 
-### 🔧 Frontend:
-- ⚛️ **React** (via Vite)
-- 🎨 **Tailwind CSS** for styling
-- 🌍 **GeoJS API** for city/region/country detection
-- 🏥 **Overpass API** for real-time hospital data
-
-### 🔧 Backend:
-- 🚀 **Node.js** + **Express.js**
-- 🌐 Deployed on **Vercel Serverless Functions**
-
-### 🚀 Deployment:
-- **Frontend**: [Vercel](https://vercel.com)
-- **Backend/API**: Vercel Serverless (Express API routes)
+<p align="left">
+  <img src="https://vitejs.dev/logo-with-shadow.png" height="40" alt="Vite" />
+  <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" height="40" alt="Tailwind CSS" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="React" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" alt="Node.js" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" height="40" alt="Express.js" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" height="40" alt="Vercel" />
+</p>
